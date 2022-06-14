@@ -1,6 +1,0 @@
-MATCH (a:Individu)-[:VIU]->(h:Habitatge{municipi: "SFLL"}) 
-WITH h.anyPadro as any, h.carrer as carrer, count(a) as total 
-ORDER BY total 
-WITH any, collect(carrer)[0] as min_carrer 
-RETURN any, min_carrer 
-ORDER BY any;
