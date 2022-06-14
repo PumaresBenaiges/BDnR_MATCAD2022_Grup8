@@ -1,0 +1,5 @@
+MATCH(h:Habitatge{municipi:"CR"})<-[:VIU]-(a:Individu)<- [rel:FAMILIA]-(e:Individu) 
+WHERE rel.relacio_h=~"f.*"
+WITH e, size(collect(a.id_ind)) AS num 
+WHERE num > 3
+RETURN e.nom AS nom, e.cognom AS cognom, e.cognom2 AS cognom2, num ORDER BY num DESC LIMIT 20;

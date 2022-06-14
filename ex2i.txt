@@ -1,0 +1,4 @@
+MATCH (a:Individu)-[rel:FAMILIA]->(e:Individu)-[:VIU]->(h:Habitatge{municipi: "SFLL",anyPadro:1881})<-[:VIU]-(a)
+WHERE  rel.relacio_h=~"f.*"
+RETURN count(a) as total_fills, count(distinct h) as num_llars,
+ round(count( a)/toFloat(count(distinct h)), 2) as mitjana;
